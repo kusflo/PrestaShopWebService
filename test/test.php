@@ -4,10 +4,36 @@
  */
 require_once '../autoload.php';
 /**** Examples ***/
+//listOrdersToArray();
+//getOrderByIdToArray(1);
 //listCustomersToArray();
 //getCustomerByIdToArray(1);
-//listApiPermissions();
+//listApiPermissionsToXml();
 /*****************/
+function listOrdersToArray()
+{
+    try {
+        $o = new PShopOrders();
+        $orders = $o->getList();
+        echo '<pre>';
+        var_dump($orders);
+    } catch (PShopWebServiceException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function getOrderByIdToArray($id)
+{
+    try {
+        $o = new PShopOrders();
+        $order = $o->getById($id);
+        echo '<pre>';
+        var_dump($order);
+    } catch (PShopWebServiceException $e) {
+        echo $e->getMessage();
+    }
+}
+
 function listCustomersToArray()
 {
     try {
@@ -32,7 +58,7 @@ function getCustomerByIdToArray($id)
     }
 }
 
-function listApiPermissions()
+function listApiPermissionsToXml()
 {
     try {
         $c = new PShopCustomers();

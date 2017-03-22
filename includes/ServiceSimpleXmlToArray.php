@@ -5,6 +5,20 @@
  */
 class ServiceSimpleXmlToArray
 {
+    public static function take($xmlObject)
+    {
+        $service = new self($xmlObject);
+        return $service->xmlToArray($xmlObject);
+    }
+
+    public static function takeMultiple($xmlObjects)
+    {
+        foreach ($xmlObjects as $obj) {
+            $array[] = self::take($obj);
+        }
+        return $array;
+    }
+
     private function __construct($xmlObject)
     {
         if (!is_a($xmlObject, \SimpleXMLElement::class)) {
@@ -18,11 +32,5 @@ class ServiceSimpleXmlToArray
             $out[$index] = (is_object($node)) ? $this->xmlToArray($node) : $node;
         }
         return $out;
-    }
-
-    public static function take($xmlObject)
-    {
-        $service = new ServiceSimpleXmlToArray($xmlObject);
-        return $service->xmlToArray($xmlObject);
     }
 }

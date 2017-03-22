@@ -11,3 +11,5 @@ For more details see the test folder
 - List Customers to array.
 - Get Customer by id to array.
 - List Api Permissions
+- List Orders to array.
+- Get Order by id to array.
