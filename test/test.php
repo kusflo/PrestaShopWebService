@@ -3,13 +3,42 @@
  * @author Marcos Redondo <kusflo at gmail.com>
  */
 require_once '../autoload.php';
-/**** Examples ***/
+/**** Examples Products ***/
+//listProductsToArray();
+//getProductByIdToArray(1);
+/**** Examples Orders ***/
 //listOrdersToArray();
 //getOrderByIdToArray(1);
+/**** Examples Customers ***/
 //listCustomersToArray();
 //getCustomerByIdToArray(1);
+/**** View api options ***/
 //listApiPermissionsToXml();
 /*****************/
+function listProductsToArray()
+{
+    try {
+        $p = new PShopProducts();
+        $products = $p->getList();
+        echo '<pre>';
+        var_dump($products);
+    } catch (PShopWebServiceException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function getProductByIdToArray($id)
+{
+    try {
+        $p = new PShopProducts();
+        $product = $p->getById($id);
+        echo '<pre>';
+        var_dump($product);
+    } catch (PShopWebServiceException $e) {
+        echo $e->getMessage();
+    }
+}
+
 function listOrdersToArray()
 {
     try {

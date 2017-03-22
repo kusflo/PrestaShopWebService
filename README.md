@@ -8,8 +8,10 @@ This library allows you to download data from our prestashop store in a simple w
 # List of Published Functions
 For more details see the test folder
 
+- List Products to array.
+- Get Products by id to array.
+- List Orders to array.
+- Get Order by id to array.
 - List Customers to array.
 - Get Customer by id to array.
 - List Api Permissions
-- List Orders to array.
-- Get Order by id to array.
