@@ -1,4 +1,4 @@
-# PrestashopWebService7
+# PrestashopWebService 1.7.x
 PHP library (not official) for PrestaShop 1.7.x Webservices.
 
 Write the webservice parameters of your store in the file config.inc_default.php and rename it to config.inc.php
