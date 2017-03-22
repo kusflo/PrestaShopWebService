@@ -18,11 +18,11 @@ require_once '../autoload.php';
 function listProductsToArray()
 {
     try {
-        $p = new PShopProducts();
+        $p = new PShopWsProducts();
         $products = $p->getList();
         echo '<pre>';
         var_dump($products);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -30,11 +30,11 @@ function listProductsToArray()
 function getProductByIdToArray($id)
 {
     try {
-        $p = new PShopProducts();
+        $p = new PShopWsProducts();
         $product = $p->getById($id);
         echo '<pre>';
         var_dump($product);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -42,11 +42,11 @@ function getProductByIdToArray($id)
 function listOrdersToArray()
 {
     try {
-        $o = new PShopOrders();
+        $o = new PShopWsOrders();
         $orders = $o->getList();
         echo '<pre>';
         var_dump($orders);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -54,11 +54,11 @@ function listOrdersToArray()
 function getOrderByIdToArray($id)
 {
     try {
-        $o = new PShopOrders();
+        $o = new PShopWsOrders();
         $order = $o->getById($id);
         echo '<pre>';
         var_dump($order);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -66,11 +66,11 @@ function getOrderByIdToArray($id)
 function listCustomersToArray()
 {
     try {
-        $c = new PShopCustomers();
+        $c = new PShopWsCustomers();
         $customers = $c->getList();
         echo '<pre>';
         var_dump($customers);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -78,11 +78,11 @@ function listCustomersToArray()
 function getCustomerByIdToArray($id)
 {
     try {
-        $c = new PShopCustomers();
+        $c = new PShopWsCustomers();
         $customer = $c->getById($id);
         echo '<pre>';
         var_dump($customer);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
@@ -90,11 +90,11 @@ function getCustomerByIdToArray($id)
 function listApiPermissionsToXml()
 {
     try {
-        $c = new PShopCustomers();
+        $c = new PShopWsCustomers();
         $permissions = $c->getApiPermissions();
         echo '<pre>';
         var_dump($permissions);
-    } catch (PShopWebServiceException $e) {
+    } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }

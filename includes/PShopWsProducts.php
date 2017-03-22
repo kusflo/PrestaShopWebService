@@ -3,7 +3,7 @@
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
-class PShopProducts extends PShopWebService
+class PShopWsProducts extends PShopWs
 {
     public function __construct()
     {

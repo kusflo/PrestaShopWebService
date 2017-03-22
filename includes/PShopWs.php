@@ -3,7 +3,7 @@
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
-abstract class PShopWebService
+abstract class PShopWs
 {
     const _VERSION_MIN = '1.7.0.0';
     const _VERSION_MAX = '1.7.1.0';
@@ -78,7 +78,7 @@ abstract class PShopWebService
     /**
      * @param $response
      * @return \SimpleXMLElement
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function parseXML($response)
     {
@@ -89,17 +89,17 @@ abstract class PShopWebService
             if (libxml_get_errors()) {
                 $msg = var_export(libxml_get_errors(), true);
                 libxml_clear_errors();
-                throw new PShopWebServiceException('HTTP XML response is not parsable: ' . $msg);
+                throw new PShopWsException('HTTP XML response is not parsable: ' . $msg);
             }
             return $xml;
         } else {
-            throw new PShopWebServiceException('HTTP response is empty');
+            throw new PShopWsException('HTTP response is empty');
         }
     }
 
     /**
      * @param $statusCode
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function checkStatusCode($statusCode)
     {
@@ -109,35 +109,35 @@ abstract class PShopWebService
             case 201:
                 break;
             case 204:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'No content'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'No content'));
                 break;
             case 400:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'Bad Request'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'Bad Request'));
                 break;
             case 401:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'Unauthorized'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'Unauthorized'));
                 break;
             case 404:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'Not Found'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'Not Found'));
                 break;
             case 405:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'Method Not Allowed'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'Method Not Allowed'));
                 break;
             case 500:
-                throw new PShopWebServiceException(sprintf($error_label, $statusCode, 'Internal Server Error'));
+                throw new PShopWsException(sprintf($error_label, $statusCode, 'Internal Server Error'));
                 break;
             default:
-                throw new PShopWebServiceException('This call to PrestaShop Web Services returned an unexpected HTTP status of:' . $statusCode);
+                throw new PShopWsException('This call to PrestaShop Web Services returned an unexpected HTTP status of:' . $statusCode);
         }
     }
 
     /**
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function checkExtensionCurl()
     {
         if (!extension_loaded('curl')) {
-            throw new PShopWebServiceException('Please activate the PHP extension \'curl\'');
+            throw new PShopWsException('Please activate the PHP extension \'curl\'');
         }
     }
 
@@ -183,13 +183,13 @@ abstract class PShopWebService
     /**
      * @param $curlParams
      * @param $response
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function checkValidResponse($curlParams, $response)
     {
         $index = strpos($response, "\r\n\r\n");
         if ($index === false && $curlParams[CURLOPT_CUSTOMREQUEST] != 'HEAD') {
-            throw new PShopWebServiceException('Bad HTTP response');
+            throw new PShopWsException('Bad HTTP response');
         }
     }
 
@@ -233,7 +233,7 @@ abstract class PShopWebService
 
     /**
      * @param $headerArray
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function checkValidVersion($headerArray)
     {
@@ -243,7 +243,7 @@ abstract class PShopWebService
                 version_compare(self::_VERSION_MIN, $headerArray['PSWS-Version']) == 1 ||
                 version_compare(self::_VERSION_MAX, $headerArray['PSWS-Version']) == -1
             ) {
-                throw new PShopWebServiceException('This library is not compatible with this version of PrestaShop. Please upgrade/downgrade this library');
+                throw new PShopWsException('This library is not compatible with this version of PrestaShop. Please upgrade/downgrade this library');
             }
         }
     }
@@ -261,12 +261,12 @@ abstract class PShopWebService
     /**
      * @param $statusCode
      * @param $session
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function checkValidStatusCodeResponse($statusCode, $session)
     {
         if ($statusCode === 0) {
-            throw new PShopWebServiceException('CURL Error: ' . curl_error($session));
+            throw new PShopWsException('CURL Error: ' . curl_error($session));
         }
     }
 
@@ -297,7 +297,7 @@ abstract class PShopWebService
     /**
      * @param $options
      * @return string
-     * @throws PShopWebServiceException
+     * @throws PShopWsException
      */
     private function getValidUrl($options)
     {

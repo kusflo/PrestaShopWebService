@@ -22,7 +22,7 @@ class ServiceSimpleXmlToArray
     private function __construct($xmlObject)
     {
         if (!is_a($xmlObject, \SimpleXMLElement::class)) {
-            throw new PShopWebServiceException('The service ' . __CLASS__ . ' has received a parameter other than SimpleXmlElement');
+            throw new PShopWsException('The service ' . __CLASS__ . ' has received a parameter other than SimpleXmlElement');
         }
     }
 
