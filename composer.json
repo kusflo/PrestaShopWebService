@@ -1,0 +1,34 @@
+{
+  "name": "kusflo/PrestaShopWebService",
+  "type": "library",
+  "description": "PHP library (not official) for PrestaShop 1.7.x Webservices.",
+  "keywords": [
+    "php",
+    "prestashop",
+    "webservices",
+    "arrays",
+    "store",
+    "api",
+    "erp",
+    "date",
+    "filter"
+  ],
+  "homepage": "https://github.com/kusflo/PrestaShopWebService",
+  "license": "GNU-3.0",
+  "authors": [
+    {
+      "name": "Marcos Redondo",
+      "email": "kusflo@gmail.com",
+      "role": "Full-Stack Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-2": {
+      "PrestaShopWebServices": "includes"
+    }
+  }
+}
