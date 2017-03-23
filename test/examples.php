@@ -5,9 +5,10 @@
 require_once '../autoload.php';
 /**** Examples Products ***/
 //listProductsToArray();
-//getProductByIdToArray(1);
+//getProductById(1);
 /**** Examples Orders ***/
 //listOrdersToArray();
+//listOrdersLastDaysToArray(7);
 //getOrderByIdToArray(1);
 /**** Examples Customers ***/
 //listCustomersToArray();
@@ -27,7 +28,7 @@ function listProductsToArray()
     }
 }
 
-function getProductByIdToArray($id)
+function getProductById($id)
 {
     try {
         $p = new PShopWsProducts();
@@ -44,6 +45,18 @@ function listOrdersToArray()
     try {
         $o = new PShopWsOrders();
         $orders = $o->getList();
+        echo '<pre>';
+        var_dump($orders);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function listOrdersLastDaysToArray($days)
+{
+    try {
+        $o = new PShopWsOrders();
+        $orders = $o->getListLastDays($days);
         echo '<pre>';
         var_dump($orders);
     } catch (PShopWsException $e) {

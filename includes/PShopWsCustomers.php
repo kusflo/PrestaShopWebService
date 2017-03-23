@@ -11,36 +11,25 @@ class PShopWsCustomers extends PShopWs
     }
 
     /**
-     * @return array
-     */
-    public function getList()
-    {
-        return ServiceSimpleXmlToArray::takeMultiple($this->requestAllCustomers());
-    }
-
-    /**
      * @param $id int
      * @return array
      */
     public function getById($id)
     {
-        $object = $this->requestCustomer($id);
+        $options['resource'] = 'customers';
+        $options['id'] = $id;
+        $object = $this->get($options);
         return ServiceSimpleXmlToArray::take($object->customer);
     }
 
-    private function requestCustomer($id)
+    /**
+     * @return array
+     */
+    public function getList()
     {
-        $opt['resource'] = 'customers';
-        $opt['id'] = $id;
-        $object = $this->get($opt);
-        return $object;
-    }
-
-    private function requestAllCustomers()
-    {
-        $opt['resource'] = 'customers';
-        $opt['display'] = 'full';
-        $objects = $this->get($opt);
-        return $objects->customers->customer;
+        $options['resource'] = 'customers';
+        $options['display'] = 'full';
+        $objects = $this->get($options);
+        return ServiceSimpleXmlToArray::takeMultiple($objects->customers->customer);
     }
 }

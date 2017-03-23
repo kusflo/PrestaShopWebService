@@ -10,29 +10,56 @@ class PShopWsOrders extends PShopWs
         parent::__construct();
     }
 
-    public function getList()
-    {
-        return ServiceSimpleXmlToArray::takeMultiple($this->requestOrders());
-    }
-
     public function getById($id)
     {
-        return ServiceSimpleXmlToArray::take($this->requestOrder($id));
+        $options['resource'] = "orders";
+        $options['id'] = $id;
+        $objects = $this->get($options);
+        return ServiceSimpleXmlToArray::take($objects->order);
     }
 
-    private function requestOrders()
+    public function getList()
     {
-        $opt['resource'] = 'orders';
-        $opt['display'] = 'full';
-        $objects = $this->get($opt);
-        return $objects->orders->order;
+        $options['resource'] = "orders";
+        $options['display'] = "full";
+        return $this->getOrders($options);
     }
 
-    private function requestOrder($id)
+    public function getListLastDays($days = 7)
     {
-        $opt['resource'] = 'orders';
-        $opt['id'] = $id;
-        $objects = $this->get($opt);
-        return $objects->order;
+        $days = $this->getLastDays($days);
+        foreach ($days as $day) {
+            $result = $this->getListByDay($day);
+            if ($result) {
+                $orders [] = $result[0];
+            }
+        }
+        return $orders;
+    }
+
+    private function getListByDay($day)
+    {
+        $options['resource'] = "orders";
+        $options['display'] = "full";
+        $options['filter[date_add]'] = ServicePShopFilters::byDay($day);
+        return $this->getOrders($options);
+    }
+
+    private function getLastDays($days)
+    {
+        for ($i = 0; $i < $days; $i++) {
+            $array[] = (new DateTime())->sub(new DateInterval("P" . $i . "D"))->format('Y-m-d');
+        }
+        return $array;
+    }
+
+    /**
+     * @param $options
+     * @return array
+     */
+    private function getOrders($options)
+    {
+        $objects = $this->get($options);
+        return ServiceSimpleXmlToArray::takeMultiple($objects->orders->order);
     }
 }

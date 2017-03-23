@@ -12,27 +12,17 @@ class PShopWsProducts extends PShopWs
 
     public function getList()
     {
-        return ServiceSimpleXmlToArray::takeMultiple($this->requestProducts());
+        $options['resource'] = 'products';
+        $options['display'] = 'full';
+        $objects = $this->get($options);
+        return ServiceSimpleXmlToArray::takeMultiple($objects->products->product);
     }
 
     public function getById($id)
     {
-        return ServiceSimpleXmlToArray::take($this->requestProduct($id));
-    }
-
-    private function requestProducts()
-    {
-        $opt['resource'] = 'products';
-        $opt['display'] = 'full';
-        $objects = $this->get($opt);
-        return $objects->products->product;
-    }
-
-    private function requestProduct($id)
-    {
-        $opt['resource'] = 'products';
-        $opt['id'] = $id;
-        $objects = $this->get($opt);
-        return $objects->product;
+        $options['resource'] = 'products';
+        $options['id'] = $id;
+        $objects = $this->get($options);
+        return ServiceSimpleXmlToArray::take($objects->product);
     }
 }

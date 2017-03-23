@@ -319,6 +319,7 @@ abstract class PShopWs
             }
             if (count($url_params) > 0) {
                 $url .= '?' . http_build_query($url_params);
+                $url = urldecode($url);
             }
         } else {
             $url = $this->url . '/api/';
