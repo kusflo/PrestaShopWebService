@@ -6,17 +6,19 @@ Write the webservice parameters of your store in the file config.inc_default.php
 # Description
 This library allows you to download data from our prestashop store in a simple way.
 # List of Published Functions
-For more details see the test folder
+For more details see the test folder:
 
-###Products
-- List Products to array.
-- Get Products by id to array.
-###Orders
+#Orders
 - List Orders to array.
 - **List filtered orders by recent date**
 - Get Order by id to array.
-###Customers
+
+#Products
+- List Products to array.
+- Get Products by id to array.
+
+#Customers
 - List Customers to array.
 - Get Customer by id to array.
-###Api
+#Api
 - List Api Permissions
