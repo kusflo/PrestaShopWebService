@@ -1,8 +1,16 @@
 <?php
+namespace pshopws;
+
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
-require_once '../autoload.php';
+require_once '../src/PShopWs.php';
+require_once '../src/PShopWsCustomers.php';
+require_once '../src/PShopWsException.php';
+require_once '../src/PShopWsOrders.php';
+require_once '../src/PShopWsProducts.php';
+require_once '../src/ServicePShopFilters.php';
+require_once '../src/ServiceSimpleXmlToArray.php';
 /**** Examples Products ***/
 //listProductsToArray();
 //getProductById(1);

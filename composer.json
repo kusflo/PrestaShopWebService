@@ -1,5 +1,5 @@
 {
-  "name": "kusflo/prestashop-webservice",
+  "name": "kusflo/pshopws",
   "type": "library",
   "description": "PHP library (not official) for PrestaShop 1.7.x Webservices.",
   "keywords": [
@@ -27,8 +27,8 @@
     "ext-curl": "*"
   },
   "autoload": {
-    "psr-2": {
-      "PrestaShopWebServices": "includes"
+    "psr-4": {
+      "kusflo\\pshopws\\": "src"
     }
   }
 }

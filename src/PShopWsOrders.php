@@ -1,4 +1,5 @@
 <?php
+namespace pshopws;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
@@ -48,7 +49,7 @@ class PShopWsOrders extends PShopWs
     private function getLastDays($days)
     {
         for ($i = 0; $i < $days; $i++) {
-            $array[] = (new DateTime())->sub(new DateInterval("P" . $i . "D"))->format('Y-m-d');
+            $array[] = (new \DateTime())->sub(new \DateInterval("P" . $i . "D"))->format('Y-m-d');
         }
         return $array;
     }
