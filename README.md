@@ -6,6 +6,9 @@ Write the webservice parameters of your store in the file config.inc_default.php
 # Description
 This library allows you to download data from our prestashop store in a simple way.
 
+# Installation
+composer require kusflo/prestashop-webservice
+
 # List of Published Functions
 For more details see the test folder:
 
