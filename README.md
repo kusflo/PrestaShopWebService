@@ -4,7 +4,8 @@ PHP library (not official) for PrestaShop 1.7.x Webservices.
 Write the webservice parameters of your store in the file config.inc_default.php and rename it to config.inc.php
 
 # Description
-This library allows you to download data from our prestashop store in a simple way.
+This library allows you to download data from the prestashop store in a simple way. 
+The data is transformed to an associative array.
 
 # Installation
 composer require kusflo/prestashop-webservice
