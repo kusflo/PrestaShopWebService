@@ -1,5 +1,5 @@
 {
-  "name": "kusflo/PrestaShopWebService",
+  "name": "kusflo/prestashop-webservice",
   "type": "library",
   "description": "PHP library (not official) for PrestaShop 1.7.x Webservices.",
   "keywords": [
