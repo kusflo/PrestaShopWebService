@@ -8,7 +8,7 @@ This library allows you to download data from the prestashop store in a simple w
 The data is transformed to an associative array.
 
 # Installation
-composer require kusflo/prestashop-webservice
+composer require kusflo/prestashop-webservice dev-master
 
 # List of Published Functions
 For more details see the test folder:
