@@ -13,17 +13,18 @@ composer require kusflo/prestashop-webservice dev-master
 # List of Published Functions
 For more details see the test folder:
 
-#Orders
+Orders
 - List Orders to array.
 - **List filtered orders by recent date**
 - Get Order by id to array.
 
-#Products
+Products
 - List Products to array.
 - Get Products by id to array.
 
-#Customers
+Customers
 - List Customers to array.
 - Get Customer by id to array.
-#Api
+
+Api
 - List Api Permissions
