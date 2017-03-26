@@ -1,4 +1,5 @@
 <?php
+
 namespace pshopws;
 
 /**
@@ -6,9 +7,9 @@ namespace pshopws;
  */
 class PShopWsCustomers extends PShopWs
 {
-    public function __construct()
+    public function __construct($url, $key, $debug)
     {
-        parent::__construct();
+        parent::__construct($url, $key, $debug);
     }
 
     /**
@@ -20,6 +21,7 @@ class PShopWsCustomers extends PShopWs
         $options['resource'] = 'customers';
         $options['id'] = $id;
         $object = $this->get($options);
+
         return ServiceSimpleXmlToArray::take($object->customer);
     }
 
@@ -31,6 +33,7 @@ class PShopWsCustomers extends PShopWs
         $options['resource'] = 'customers';
         $options['display'] = 'full';
         $objects = $this->get($options);
+
         return ServiceSimpleXmlToArray::takeMultiple($objects->customers->customer);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace pshopws;
 
 /**
@@ -14,13 +15,12 @@ abstract class PShopWs
     private $debug;
     private $version;
 
-    protected function __construct()
+    protected function __construct($url, $key, $debug)
     {
-        require_once __DIR__ . '/../' . self::_CONFIG_FILE;
         $this->checkExtensionCurl();
-        $this->url = _PS_SHOP_PATH;
-        $this->key = _PS_WS_AUTH_KEY;
-        $this->debug = _DEBUG;
+        $this->url = $url;
+        $this->key = $key;
+        $this->debug = $debug;
         $this->version = 'unknown';
     }
 
@@ -39,12 +39,13 @@ abstract class PShopWs
         $url = $this->getValidUrl($options);
         $response = $this->executeRequest($url, array(CURLOPT_CUSTOMREQUEST => 'GET'));
         $this->checkStatusCode($response['statusCode']);
+
         return $this->parseXML($response['response']);
     }
 
     private function printDebug($title, $content)
     {
-        echo '<div style="display:table;background:#CCC;font-size:8pt;padding:7px"><h6 style="font-size:9pt;margin:0">' . $title . '</h6><pre>' . htmlentities($content) . '</pre></div>';
+        echo '<div style="display:table;background:#CCC;font-size:8pt;padding:7px"><h6 style="font-size:9pt;margin:0">'.$title.'</h6><pre>'.htmlentities($content).'</pre></div>';
     }
 
     /**
@@ -73,6 +74,7 @@ abstract class PShopWs
         if ($this->debug) {
             $this->printBodyDebug($curlParams, $body);
         }
+
         return array('statusCode' => $statusCode, 'response' => $body, 'header' => $header);
     }
 
@@ -90,8 +92,9 @@ abstract class PShopWs
             if (libxml_get_errors()) {
                 $msg = var_export(libxml_get_errors(), true);
                 libxml_clear_errors();
-                throw new PShopWsException('HTTP XML response is not parsable: ' . $msg);
+                throw new PShopWsException('HTTP XML response is not parsable: '.$msg);
             }
+
             return $xml;
         } else {
             throw new PShopWsException('HTTP response is empty');
@@ -128,7 +131,7 @@ abstract class PShopWs
                 throw new PShopWsException(sprintf($error_label, $statusCode, 'Internal Server Error'));
                 break;
             default:
-                throw new PShopWsException('This call to PrestaShop Web Services returned an unexpected HTTP status of:' . $statusCode);
+                throw new PShopWsException('This call to PrestaShop Web Services returned an unexpected HTTP status of:'.$statusCode);
         }
     }
 
@@ -152,9 +155,10 @@ abstract class PShopWs
             CURLOPT_RETURNTRANSFER => true,
             CURLINFO_HEADER_OUT => true,
             CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-            CURLOPT_USERPWD => $this->key . ':',
-            CURLOPT_HTTPHEADER => array('Expect:')
+            CURLOPT_USERPWD => $this->key.':',
+            CURLOPT_HTTPHEADER => array('Expect:'),
         );
+
         return $defaultParams;
     }
 
@@ -178,6 +182,7 @@ abstract class PShopWs
                 $curl_options[$defkey] = $curl_params[$defkey];
             }
         }
+
         return $curl_options;
     }
 
@@ -201,6 +206,7 @@ abstract class PShopWs
     private function getHeaderResponse($response)
     {
         $header = substr($response, 0, strpos($response, "\r\n\r\n"));
+
         return $header;
     }
 
@@ -211,6 +217,7 @@ abstract class PShopWs
     private function getBodyResponse($response)
     {
         $body = substr($response, strpos($response, "\r\n\r\n") + 4);
+
         return $body;
     }
 
@@ -229,6 +236,7 @@ abstract class PShopWs
                 $headerArray[$tmp[0]] = $tmp[1];
             }
         }
+
         return $headerArray;
     }
 
@@ -256,6 +264,7 @@ abstract class PShopWs
     private function getStatusCodeResponse($session)
     {
         $statusCode = curl_getinfo($session, CURLINFO_HTTP_CODE);
+
         return $statusCode;
     }
 
@@ -267,7 +276,7 @@ abstract class PShopWs
     private function checkValidStatusCodeResponse($statusCode, $session)
     {
         if ($statusCode === 0) {
-            throw new PShopWsException('CURL Error: ' . curl_error($session));
+            throw new PShopWsException('CURL Error: '.curl_error($session));
         }
     }
 
@@ -305,10 +314,10 @@ abstract class PShopWs
         if (isset($options['url'])) {
             $url = $options['url'];
         } elseif (isset($options['resource'])) {
-            $url = $this->url . '/api/' . $options['resource'];
+            $url = $this->url.'/api/'.$options['resource'];
             $url_params = array();
             if (isset($options['id'])) {
-                $url .= '/' . $options['id'];
+                $url .= '/'.$options['id'];
             }
             $params = array('filter', 'display', 'sort', 'limit', 'id_shop', 'id_group_shop');
             foreach ($params as $p) {
@@ -319,12 +328,13 @@ abstract class PShopWs
                 }
             }
             if (count($url_params) > 0) {
-                $url .= '?' . http_build_query($url_params);
+                $url .= '?'.http_build_query($url_params);
                 $url = urldecode($url);
             }
         } else {
-            $url = $this->url . '/api/';
+            $url = $this->url.'/api/';
         }
+
         return $url;
     }
 }

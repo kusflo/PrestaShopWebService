@@ -1,10 +1,15 @@
 <?php
+
 namespace pshopws;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
-require '/../vendor/autoload.php';
+require '../vendor/autoload.php';
+/*** Connection Data ****/
+define('_PS_SHOP_PATH', "");
+define('_PS_WS_AUTH_KEY', "");
+define('_DEBUG', false);
 /**** Examples Products ***/
 //listProductsToArray();
 //getProductById(1);
@@ -21,7 +26,7 @@ require '/../vendor/autoload.php';
 function listProductsToArray()
 {
     try {
-        $p = new PShopWsProducts();
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $products = $p->getList();
         echo '<pre>';
         var_dump($products);
@@ -33,7 +38,7 @@ function listProductsToArray()
 function getProductById($id)
 {
     try {
-        $p = new PShopWsProducts();
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $product = $p->getById($id);
         echo '<pre>';
         var_dump($product);
@@ -45,7 +50,7 @@ function getProductById($id)
 function listOrdersToArray()
 {
     try {
-        $o = new PShopWsOrders();
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $orders = $o->getList();
         echo '<pre>';
         var_dump($orders);
@@ -57,7 +62,7 @@ function listOrdersToArray()
 function listOrdersLastDaysToArray($days)
 {
     try {
-        $o = new PShopWsOrders();
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $orders = $o->getListLastDays($days);
         echo '<pre>';
         var_dump($orders);
@@ -69,7 +74,7 @@ function listOrdersLastDaysToArray($days)
 function getOrderByIdToArray($id)
 {
     try {
-        $o = new PShopWsOrders();
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $order = $o->getById($id);
         echo '<pre>';
         var_dump($order);
@@ -81,7 +86,7 @@ function getOrderByIdToArray($id)
 function listCustomersToArray()
 {
     try {
-        $c = new PShopWsCustomers();
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $customers = $c->getList();
         echo '<pre>';
         var_dump($customers);
@@ -93,7 +98,7 @@ function listCustomersToArray()
 function getCustomerByIdToArray($id)
 {
     try {
-        $c = new PShopWsCustomers();
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $customer = $c->getById($id);
         echo '<pre>';
         var_dump($customer);
@@ -105,7 +110,7 @@ function getCustomerByIdToArray($id)
 function listApiPermissionsToXml()
 {
     try {
-        $c = new PShopWsCustomers();
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $permissions = $c->getApiPermissions();
         echo '<pre>';
         var_dump($permissions);

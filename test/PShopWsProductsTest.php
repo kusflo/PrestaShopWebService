@@ -7,7 +7,7 @@ class PShopWsProductsTest extends \PHPUnit_Framework_TestCase
 {
     public function testPShopWsProductsCanBeInstantiated()
     {
-        $ps = new pshopws\PShopWsProducts();
+        $ps = new pshopws\PShopWsProducts("prueba", "prueba", false);
         $this->assertInstanceOf('pshopws\PShopWsProducts', $ps);
     }
 }

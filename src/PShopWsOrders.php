@@ -1,4 +1,5 @@
 <?php
+
 namespace pshopws;
 
 /**
@@ -6,9 +7,9 @@ namespace pshopws;
  */
 class PShopWsOrders extends PShopWs
 {
-    public function __construct()
+    public function __construct($url, $key, $debug)
     {
-        parent::__construct();
+        parent::__construct($url, $key, $debug);
     }
 
     public function getById($id)
@@ -16,6 +17,7 @@ class PShopWsOrders extends PShopWs
         $options['resource'] = "orders";
         $options['id'] = $id;
         $objects = $this->get($options);
+
         return ServiceSimpleXmlToArray::take($objects->order);
     }
 
@@ -23,11 +25,13 @@ class PShopWsOrders extends PShopWs
     {
         $options['resource'] = "orders";
         $options['display'] = "full";
+
         return $this->getOrders($options);
     }
 
     public function getListLastDays($days = 7)
     {
+        $orders = array();
         $days = $this->getLastDays($days);
         foreach ($days as $day) {
             $result = $this->getListByDay($day);
@@ -35,6 +39,7 @@ class PShopWsOrders extends PShopWs
                 $orders [] = $result[0];
             }
         }
+
         return $orders;
     }
 
@@ -43,14 +48,19 @@ class PShopWsOrders extends PShopWs
         $options['resource'] = "orders";
         $options['display'] = "full";
         $options['filter[date_add]'] = ServicePShopFilters::byDay($day);
+
         return $this->getOrders($options);
     }
 
     private function getLastDays($days)
     {
+        $array = array();
         for ($i = 0; $i < $days; $i++) {
-            $array[] = (new \DateTime())->sub(new \DateInterval("P" . $i . "D"))->format('Y-m-d');
+            $array[] = (new \DateTime('now',
+                new \DateTimeZone('Europe/London')))
+                ->sub(new \DateInterval("P".$i."D"))->format('Y-m-d');
         }
+
         return $array;
     }
 
@@ -61,6 +71,7 @@ class PShopWsOrders extends PShopWs
     private function getOrders($options)
     {
         $objects = $this->get($options);
+
         return ServiceSimpleXmlToArray::takeMultiple($objects->orders->order);
     }
 }
