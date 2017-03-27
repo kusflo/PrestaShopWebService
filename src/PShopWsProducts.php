@@ -7,7 +7,7 @@ namespace pshopws;
  */
 class PShopWsProducts extends PShopWs
 {
-    public function __construct($url, $key, $debug)
+    public function __construct($url, $key, $debug = false)
     {
         parent::__construct($url, $key, $debug);
     }

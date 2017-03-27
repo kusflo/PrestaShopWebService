@@ -7,7 +7,7 @@ namespace pshopws;
  */
 class PShopWsOrders extends PShopWs
 {
-    public function __construct($url, $key, $debug)
+    public function __construct($url, $key, $debug = false)
     {
         parent::__construct($url, $key, $debug);
     }
@@ -56,8 +56,10 @@ class PShopWsOrders extends PShopWs
     {
         $array = array();
         for ($i = 0; $i < $days; $i++) {
-            $array[] = (new \DateTime('now',
-                new \DateTimeZone('Europe/London')))
+            $array[] = (new \DateTime(
+                'now',
+                new \DateTimeZone('Europe/London')
+            ))
                 ->sub(new \DateInterval("P".$i."D"))->format('Y-m-d');
         }
 

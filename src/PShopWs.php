@@ -45,7 +45,9 @@ abstract class PShopWs
 
     private function printDebug($title, $content)
     {
-        echo '<div style="display:table;background:#CCC;font-size:8pt;padding:7px"><h6 style="font-size:9pt;margin:0">'.$title.'</h6><pre>'.htmlentities($content).'</pre></div>';
+        echo '<div style="display:table;background:#CCC;font-size:8pt;padding:7px"><h6 style="font-size:9pt;margin:0">'.$title.'</h6><pre>'.htmlentities(
+                $content
+            ).'</pre></div>';
     }
 
     /**
@@ -131,7 +133,9 @@ abstract class PShopWs
                 throw new PShopWsException(sprintf($error_label, $statusCode, 'Internal Server Error'));
                 break;
             default:
-                throw new PShopWsException('This call to PrestaShop Web Services returned an unexpected HTTP status of:'.$statusCode);
+                throw new PShopWsException(
+                    'This call to PrestaShop Web Services returned an unexpected HTTP status of:'.$statusCode
+                );
         }
     }
 
@@ -252,7 +256,9 @@ abstract class PShopWs
                 version_compare(self::_VERSION_MIN, $headerArray['PSWS-Version']) == 1 ||
                 version_compare(self::_VERSION_MAX, $headerArray['PSWS-Version']) == -1
             ) {
-                throw new PShopWsException('This library is not compatible with this version of PrestaShop. Please upgrade/downgrade this library');
+                throw new PShopWsException(
+                    'This library is not compatible with this version of PrestaShop. Please upgrade/downgrade this library'
+                );
             }
         }
     }
