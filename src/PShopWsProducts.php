@@ -25,8 +25,8 @@ class PShopWsProducts extends PShopWs
     {
         $options['resource'] = 'products';
         $options['id'] = $id;
-        $objects = $this->get($options);
+        $object = $this->get($options);
 
-        return ServiceSimpleXmlToArray::take($objects->product);
+        return ServiceSimpleXmlToArray::take($object->product);
     }
 }
