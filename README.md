@@ -14,6 +14,7 @@ For more details see the test folder:
 Orders
 - List Orders to array.
 - **List filtered orders by recent date**
+- **List filtered orders of today**
 - Get Order by id to array.
 
 Products
