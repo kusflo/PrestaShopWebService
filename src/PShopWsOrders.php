@@ -43,6 +43,11 @@ class PShopWsOrders extends PShopWs
         return $orders;
     }
 
+    public function getListToday()
+    {
+        return $this->getListByDay($this->getDateTimeNow()->format('Y-m-d'));
+    }
+
     private function getListByDay($day)
     {
         $options['resource'] = "orders";
@@ -56,10 +61,7 @@ class PShopWsOrders extends PShopWs
     {
         $array = array();
         for ($i = 0; $i < $days; $i++) {
-            $array[] = (new \DateTime(
-                'now',
-                new \DateTimeZone('Europe/London')
-            ))
+            $array[] = $this->getDateTimeNow()
                 ->sub(new \DateInterval("P".$i."D"))->format('Y-m-d');
         }
 
@@ -75,5 +77,16 @@ class PShopWsOrders extends PShopWs
         $objects = $this->get($options);
 
         return ServiceSimpleXmlToArray::takeMultiple($objects->orders->order);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    private function getDateTimeNow()
+    {
+        return (new \DateTime(
+            'now',
+            new \DateTimeZone('Europe/London')
+        ));
     }
 }

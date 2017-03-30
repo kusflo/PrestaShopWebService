@@ -16,6 +16,7 @@ define('_DEBUG', false);
 /**** Examples Orders ***/
 //listOrdersToArray();
 //listOrdersLastDaysToArray(7);
+//listOrdersToday();
 //getOrderByIdToArray(1);
 /**** Examples Customers ***/
 //listCustomersToArray();
@@ -64,6 +65,18 @@ function listOrdersLastDaysToArray($days)
     try {
         $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
         $orders = $o->getListLastDays($days);
+        echo '<pre>';
+        var_dump($orders);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function listOrdersToday()
+{
+    try {
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $orders = $o->getListToday();
         echo '<pre>';
         var_dump($orders);
     } catch (PShopWsException $e) {
