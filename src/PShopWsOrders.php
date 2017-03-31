@@ -81,12 +81,14 @@ class PShopWsOrders extends PShopWs
 
     /**
      * @return \DateTime
+     * @throws PShopWsException
      */
     private function getDateTimeNow()
     {
-        return (new \DateTime(
-            'now',
-            new \DateTimeZone('Europe/London')
-        ));
+        if (!date_default_timezone_get()) {
+            throw new PShopWsException("You must inform the time_zone in your php.ini");
+        }
+
+        return new \DateTime();
     }
 }

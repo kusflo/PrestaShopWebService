@@ -18,4 +18,5 @@ class PShopWsOrdersTestClass extends PShopWsOrders
 
         return $sXml;
     }
+
 }
