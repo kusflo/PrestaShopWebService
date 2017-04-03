@@ -2,20 +2,23 @@
 
 namespace phshopws;
 
+use PHPUnit_Framework_TestCase;
 use pshopws\PShopWsException;
 use pshopws\PShopWsProducts;
 use pshopws\PShopWsProductsTestClass;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
- * @property PShopWsProductsTestClass $ps
+ * @cover PShopWsProducts
  */
-class PShopWsProductsTest extends \PHPUnit_Framework_TestCase
+class PShopWsProductsTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()
     {
-        $ps = new PShopWsProducts(null, null);
-        $this->assertInstanceOf(PShopWsProducts::class, $ps);
+        $ps = new PShopWsProductsTestClass(null, null);
+        $this->assertInstanceOf(PShopWsProductsTestClass::class, $ps);
+
+        return $ps;
     }
 
     public function testGetByIdBadRequest()
@@ -25,15 +28,21 @@ class PShopWsProductsTest extends \PHPUnit_Framework_TestCase
         $ps->getById(null);
     }
 
-    public function testGetById()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsProductsTestClass
+     */
+    public function testGetById($ps)
     {
-        $ps = new PShopWsProductsTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getById(1));
     }
 
-    public function testGetList()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsProductsTestClass
+     */
+    public function testGetList($ps)
     {
-        $ps = new PShopWsProductsTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getList()[0]);
     }
 }

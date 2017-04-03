@@ -2,20 +2,23 @@
 
 namespace phshopws;
 
+use PHPUnit_Framework_TestCase;
 use pshopws\PShopWsException;
 use pshopws\PShopWsOrders;
 use pshopws\PShopWsOrdersTestClass;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
- * @property PShopWsOrdersTestClass $ps
+ * @cover PShopWsOrders
  */
-class PShopWsOrdersTest extends \PHPUnit_Framework_TestCase
+class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()
     {
-        $ps = new PShopWsOrders(null, null);
-        $this->assertInstanceOf(PShopWsOrders::class, $ps);
+        $ps = new PShopWsOrdersTestClass(null, null);
+        $this->assertInstanceOf(PShopWsOrdersTestClass::class, $ps);
+
+        return $ps;
     }
 
     public function testGetByIdBadRequest()
@@ -25,27 +28,39 @@ class PShopWsOrdersTest extends \PHPUnit_Framework_TestCase
         $ps->getById(null);
     }
 
-    public function testGetById()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsOrdersTestClass
+     */
+    public function testGetById($ps)
     {
-        $ps = new PShopWsOrdersTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getById(1));
     }
 
-    public function testGetList()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsOrdersTestClass
+     */
+    public function testGetList($ps)
     {
-        $ps = new PShopWsOrdersTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getList()[0]);
     }
 
-    public function testGetListLastDays()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsOrdersTestClass
+     */
+    public function testGetListLastDays($ps)
     {
-        $ps = new PShopWsOrdersTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getListLastDays()[0]);
     }
 
-    public function testGetListToday()
+    /**
+     * @depends testCanBeInstantiated
+     * @param $ps PShopWsOrdersTestClass
+     */
+    public function testGetListToday($ps)
     {
-        $ps = new PShopWsOrdersTestClass(null, null);
         $this->assertArrayHasKey("id", $ps->getListToday()[0]);
     }
 }
