@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kusflo/PrestaShopWebService.svg?branch=master)](https://travis-ci.org/kusflo/PrestaShopWebService)
+
 # PrestashopWebService 1.7.x
 PHP library (not official) for PrestaShop 1.7.x Webservices.
 
