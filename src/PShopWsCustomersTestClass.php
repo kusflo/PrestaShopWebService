@@ -10,10 +10,10 @@ class PShopWsCustomersTestClass extends PShopWsCustomers
     protected function get($options = null)
     {
         if (isset($options['id'])) {
-            $sXml = new \SimpleXMLElement('<xm><customer><id>1</id></customer></xm>');
+            $sXml = new \SimpleXMLElement('<xml><customer><id>1</id></customer></xml>');
         } else {
             $options['display'] = 'full';
-            $sXml = new \SimpleXMLElement('<xm><customers><customer><id>1</id></customer></customers></xm>');
+            $sXml = new \SimpleXMLElement('<xml><customers><customer><id>1</id></customer></customers></xml>');
         }
 
         return $sXml;

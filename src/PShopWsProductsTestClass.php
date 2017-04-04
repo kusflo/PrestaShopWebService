@@ -10,9 +10,9 @@ class PShopWsProductsTestClass extends PShopWsProducts
     protected function get($options = null)
     {
         if (isset($options['id'])) {
-            $sXml = new \SimpleXMLElement('<xm><product><id>1</id></product></xm>');
+            $sXml = new \SimpleXMLElement('<xml><product><id>1</id></product></xml>');
         } else {
-            $sXml = new \SimpleXMLElement('<xm><products><product><id>1</id></product></products></xm>');
+            $sXml = new \SimpleXMLElement('<xml><products><product><id>1</id></product></products></xml>');
         }
 
         return $sXml;

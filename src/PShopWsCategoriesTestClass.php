@@ -10,9 +10,9 @@ class PShopWsCategoriesTestClass extends PShopWsCategories
     protected function get($options = null)
     {
         if (isset($options['id'])) {
-            $sXml = new \SimpleXMLElement('<xm><category><id>1</id></category></xm>');
+            $sXml = new \SimpleXMLElement('<xml><category><id>1</id></category></xml>');
         } else {
-            $sXml = new \SimpleXMLElement('<xm><categories><category><id>1</id></category></categories></xm>');
+            $sXml = new \SimpleXMLElement('<xml><categories><category><id>1</id></category></categories></xml>');
         }
 
         return $sXml;

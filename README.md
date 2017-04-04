@@ -31,6 +31,10 @@ Categories
 - List Categories to array.
 - Get Category by id to array.
 
+Manufacturers
+- List Manufacturers to array.
+- Get Manufacture by id to array.
+
 Customers
 - List Customers to array.
 - Get Customer by id to array.

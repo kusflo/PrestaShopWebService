@@ -10,12 +10,15 @@ require '../vendor/autoload.php';
 define('_PS_SHOP_PATH', "");
 define('_PS_WS_AUTH_KEY', "");
 define('_DEBUG', false);
-/**** Examples Categories ***/
-//listCategoriesToArray();
-//getCategoryById(1);
 /**** Examples Products ***/
 //listProductsToArray();
 //getProductById(1);
+/**** Examples Categories ***/
+//listCategoriesToArray();
+//getCategoryById(1);
+/**** Examples Manufactures ***/
+//listManufacturersToArray();
+//getManufacturerById(1);
 /**** Examples Orders ***/
 //listOrdersToArray();
 //listOrdersLastDaysToArray(7);
@@ -27,6 +30,30 @@ define('_DEBUG', false);
 /**** View api options ***/
 //listApiPermissionsToXml();
 /*****************/
+function listProductsToArray()
+{
+    try {
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $products = $p->getList();
+        echo '<pre>';
+        var_dump($products);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function getProductById($id)
+{
+    try {
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $product = $p->getById($id);
+        echo '<pre>';
+        var_dump($product);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
 function listCategoriesToArray()
 {
     try {
@@ -51,25 +78,25 @@ function getCategoryById($id)
     }
 }
 
-function listProductsToArray()
+function listManufacturersToArray()
 {
     try {
-        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
-        $products = $p->getList();
+        $p = new PShopWsManufacturers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $manufacturers = $p->getList();
         echo '<pre>';
-        var_dump($products);
+        var_dump($manufacturers);
     } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
 }
 
-function getProductById($id)
+function getManufacturerById($id)
 {
     try {
-        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
-        $product = $p->getById($id);
+        $p = new PShopWsManufacturers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $manufacturer = $p->getById($id);
         echo '<pre>';
-        var_dump($product);
+        var_dump($manufacturer);
     } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
