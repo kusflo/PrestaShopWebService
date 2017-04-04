@@ -12,7 +12,7 @@ This library allows you to download data from the prestashop store in a simple w
 The data is transformed to an associative array.
 
 # Installation
-composer require kusflo/prestashop-webservice dev-master
+composer require kusflo/prestashop-webservice
 
 # List of Published Functions
 For more details see the test folder:
@@ -26,6 +26,10 @@ Orders
 Products
 - List Products to array.
 - Get Products by id to array.
+
+Categories
+- List Categories to array.
+- Get Category by id to array.
 
 Customers
 - List Customers to array.

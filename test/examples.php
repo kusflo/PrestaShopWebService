@@ -10,6 +10,9 @@ require '../vendor/autoload.php';
 define('_PS_SHOP_PATH', "");
 define('_PS_WS_AUTH_KEY', "");
 define('_DEBUG', false);
+/**** Examples Categories ***/
+//listCategoriesToArray();
+//getCategoryById(1);
 /**** Examples Products ***/
 //listProductsToArray();
 //getProductById(1);
@@ -24,6 +27,30 @@ define('_DEBUG', false);
 /**** View api options ***/
 //listApiPermissionsToXml();
 /*****************/
+function listCategoriesToArray()
+{
+    try {
+        $p = new PShopWsCategories(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $categories = $p->getList();
+        echo '<pre>';
+        var_dump($categories);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
+function getCategoryById($id)
+{
+    try {
+        $p = new PShopWsCategories(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
+        $category = $p->getById($id);
+        echo '<pre>';
+        var_dump($category);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+
 function listProductsToArray()
 {
     try {
@@ -43,18 +70,6 @@ function getProductById($id)
         $product = $p->getById($id);
         echo '<pre>';
         var_dump($product);
-    } catch (PShopWsException $e) {
-        echo $e->getMessage();
-    }
-}
-
-function listOrdersToArray()
-{
-    try {
-        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY, _DEBUG);
-        $orders = $o->getList();
-        echo '<pre>';
-        var_dump($orders);
     } catch (PShopWsException $e) {
         echo $e->getMessage();
     }
