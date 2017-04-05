@@ -9,7 +9,6 @@ abstract class PShopWs
 {
     const _VERSION_MIN = '1.6.0.0';
     const _VERSION_MAX = '1.7.1.0';
-    const _CONFIG_FILE = 'config.inc.php';
     private $url;
     private $key;
     private $debug;
