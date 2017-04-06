@@ -7,8 +7,8 @@ namespace pshopws;
  */
 require '../vendor/autoload.php';
 /*** Connection Data ****/
-define('_PS_SHOP_PATH', "http://dev.vigilabebes.com");
-define('_PS_WS_AUTH_KEY', "1IWKHF7L5N7HDD1YJS5PSDMM7CZP67XF");
+define('_PS_SHOP_PATH', "");
+define('_PS_WS_AUTH_KEY', "");
 /**** Examples Products ***/
 //listProductsToArray();
 //getProductById(1);
