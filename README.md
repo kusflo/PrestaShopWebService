@@ -1,6 +1,6 @@
 
 # PrestashopWebService Easy
-PHP library (not official) for PrestaShop Webservices 1.7.x and 1.6.x 
+PHP wrapper for PrestaShop Webservices 1.7.x and 1.6.x 
 
 [![Build Status](https://travis-ci.org/kusflo/PrestaShopWebService.svg?branch=master)](https://travis-ci.org/kusflo/PrestaShopWebService)
 [![Latest Stable Version](https://poser.pugx.org/kusflo/prestashop-webservice/v/stable)](https://packagist.org/packages/kusflo/prestashop-webservice)
@@ -8,7 +8,7 @@ PHP library (not official) for PrestaShop Webservices 1.7.x and 1.6.x
 [![License](https://poser.pugx.org/kusflo/prestashop-webservice/license)](https://packagist.org/packages/kusflo/prestashop-webservice)
 
 # Description
-This library allows you to download data from the prestashop store in a simple way. 
+This wrapper allows you to download data from the prestashop store in a simple way. 
 The data is transformed to an associative array.
 
 # Installation
