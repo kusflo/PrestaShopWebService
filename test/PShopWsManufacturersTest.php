@@ -15,17 +15,16 @@ class PShopWsManufacturersTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()
     {
-        $ps = new PShopWsManufacturersTestClass(null, null);
+        $ps = new PShopWsManufacturersTestClass('xxx', 'xxx');
         $this->assertInstanceOf(PShopWsManufacturersTestClass::class, $ps);
 
         return $ps;
     }
 
-    public function testGetByIdBadRequest()
+    public function testBadInstantiated()
     {
-        $ps = new PShopWsManufacturers(null, null);
         $this->expectException(PShopWsException::class);
-        $ps->getById(null);
+        new PShopWsManufacturers(null, null);
     }
 
     /**

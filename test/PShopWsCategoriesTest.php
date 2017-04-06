@@ -15,17 +15,16 @@ class PShopWsCategoriesTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()
     {
-        $ps = new PShopWsCategoriesTestClass(null, null);
+        $ps = new PShopWsCategoriesTestClass('xxx', 'xxx');
         $this->assertInstanceOf(PShopWsCategoriesTestClass::class, $ps);
 
         return $ps;
     }
 
-    public function testGetByIdBadRequest()
+    public function testBadInstantiated()
     {
-        $ps = new PShopWsCategories(null, null);
         $this->expectException(PShopWsException::class);
-        $ps->getById(null);
+        new PShopWsCategories(null, null);
     }
 
     /**

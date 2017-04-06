@@ -15,17 +15,16 @@ class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()
     {
-        $ps = new PShopWsOrdersTestClass(null, null);
+        $ps = new PShopWsOrdersTestClass('xxx', 'xxx');
         $this->assertInstanceOf(PShopWsOrdersTestClass::class, $ps);
 
         return $ps;
     }
 
-    public function testGetByIdBadRequest()
+    public function testBadInstantiated()
     {
-        $ps = new PShopWsOrders(null, null);
         $this->expectException(PShopWsException::class);
-        $ps->getById(null);
+        new PShopWsOrders(null, null);
     }
 
     /**

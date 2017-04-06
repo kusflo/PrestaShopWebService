@@ -7,9 +7,9 @@ namespace pshopws;
  */
 class PShopWsOrders extends PShopWs
 {
-    public function __construct($url, $key, $debug = false)
+    public function __construct($url, $key)
     {
-        parent::__construct($url, $key, $debug);
+        parent::__construct($url, $key);
     }
 
     public function getById($id)
@@ -81,14 +81,11 @@ class PShopWsOrders extends PShopWs
 
     /**
      * @return \DateTime
-     * @throws PShopWsException
      */
     private function getDateTimeNow()
     {
-        if (!date_default_timezone_get()) {
-            throw new PShopWsException("You must inform the time_zone in your php.ini");
-        }
+        $default_timezone = @date_default_timezone_get();
 
-        return new \DateTime();
+        return new \DateTime('now', new \DateTimeZone($default_timezone));
     }
 }
