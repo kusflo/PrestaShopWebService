@@ -14,8 +14,8 @@ The data is transformed to an associative array.
 # Installation
 composer require kusflo/prestashop-webservice
 
+# Example Usage
 
-#Example Usage
 ```
 function listOrdersAll()
 {
