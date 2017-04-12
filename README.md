@@ -14,30 +14,152 @@ The data is transformed to an associative array.
 # Installation
 composer require kusflo/prestashop-webservice
 
-# List of Published Functions
-For more details see the test folder:
 
-Orders
-- List Orders to array.
-- **List filtered orders by recent date**
-- **List filtered orders of today**
-- Get Order by id to array.
+#Example Usage
+```
+function listOrdersAll()
+{
+    try {
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $orders = $o->getList();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listOrdersLastDays($days)
+{
+    try {
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $orders = $o->getListLastDays($days);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listOrdersToday()
+{
+    try {
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $orders = $o->getListToday();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function getOrderById($id)
+{
+    try {
+        $o = new PShopWsOrders(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $order = $o->getById($id);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listProducts()
+{
+    try {
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $products = $p->getList();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function getProductById($id)
+{
+    try {
+        $p = new PShopWsProducts(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $product = $p->getById($id);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listCategories()
+{
+    try {
+        $p = new PShopWsCategories(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $categories = $p->getList();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function getCategoryById($id)
+{
+    try {
+        $p = new PShopWsCategories(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $category = $p->getById($id);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listManufacturers()
+{
+    try {
+        $p = new PShopWsManufacturers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $manufacturers = $p->getList();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function getManufacturerById($id)
+{
+    try {
+        $p = new PShopWsManufacturers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $manufacturer = $p->getById($id);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listCustomers()
+{
+    try {
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $customers = $c->getList();
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function getCustomerById($id)
+{
+    try {
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $customer = $c->getById($id);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
+```
+function listApiPermissionsToXml()
+{
+    try {
+        $c = new PShopWsCustomers(_PS_SHOP_PATH, _PS_WS_AUTH_KEY);
+        $permissions = $c->getApiPermissions();
+        echo '<pre>';
+        var_dump($permissions);
+    } catch (PShopWsException $e) {
+        echo $e->getMessage();
+    }
+}
+```
 
-Products
-- List Products to array.
-- Get Products by id to array.
 
-Categories
-- List Categories to array.
-- Get Category by id to array.
-
-Manufacturers
-- List Manufacturers to array.
-- Get Manufacture by id to array.
-
-Customers
-- List Customers to array.
-- Get Customer by id to array.
-
-Api
-- List Api Permissions
