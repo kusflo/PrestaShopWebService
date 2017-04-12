@@ -2,7 +2,7 @@
   "name": "kusflo/pshopws",
   "type": "library",
   "minimum-stability": "dev",
-  "description": "PHP library (not official) for PrestaShop 1.7.x Webservices.",
+  "description": "PHP wrapper for PrestaShop Webservices 1.7.x and 1.6.x.",
   "keywords": [
     "php",
     "prestashop",
