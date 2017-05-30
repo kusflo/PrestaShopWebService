@@ -3,7 +3,9 @@
  * @author Marcos Redondo <kusflo at gmail.com>
  */
 
-namespace pshopws;
+namespace PshopWs\Test\Mocks;
+
+use PshopWs\Entities\PShopWsProducts;
 
 class PShopWsProductsTestClass extends PShopWsProducts
 {

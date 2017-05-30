@@ -1,11 +1,13 @@
 <?php
-
-namespace pshopws;
-
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
-class PShopWsCategories extends PShopWs
+
+namespace PshopWs\Entities;
+
+use PshopWs\Services\ServiceSimpleXmlToArray;
+
+class PShopWsProducts extends PShopWs
 {
     public function __construct($url, $key)
     {
@@ -14,19 +16,19 @@ class PShopWsCategories extends PShopWs
 
     public function getList()
     {
-        $options['resource'] = 'categories';
+        $options['resource'] = 'products';
         $options['display'] = 'full';
         $objects = $this->get($options);
 
-        return ServiceSimpleXmlToArray::takeMultiple($objects->categories->category);
+        return ServiceSimpleXmlToArray::takeMultiple($objects->products->product);
     }
 
     public function getById($id)
     {
-        $options['resource'] = 'categories';
+        $options['resource'] = 'products';
         $options['id'] = $id;
         $object = $this->get($options);
 
-        return ServiceSimpleXmlToArray::take($object->category);
+        return ServiceSimpleXmlToArray::take($object->product);
     }
 }

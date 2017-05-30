@@ -1,16 +1,15 @@
 <?php
-
-namespace phshopws;
-
-use PHPUnit_Framework_TestCase;
-use pshopws\PShopWsException;
-use pshopws\PShopWsOrders;
-use pshopws\PShopWsOrdersTestClass;
-
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
- * @cover PShopWsOrders
  */
+
+namespace PshopWs\Test;
+
+use PHPUnit_Framework_TestCase;
+use PshopWs\Entities\PShopWsOrders;
+use PshopWs\Test\Mocks\PShopWsOrdersTestClass;
+use PshopWs\Exceptions\PShopWsException;
+
 class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
 {
     public function testCanBeInstantiated()

@@ -1,10 +1,12 @@
 <?php
-
-namespace pshopws;
-
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
+
+namespace PshopWs\Entities;
+
+use PshopWs\Services\ServiceSimpleXmlToArray;
+
 class PShopWsManufacturers extends PShopWs
 {
     public function __construct($url, $key)

@@ -1,7 +1,6 @@
 <?php
 
-namespace pshopws;
-
+namespace PshopWs\Exceptions;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>

@@ -1,5 +1,5 @@
 {
-  "name": "kusflo/pshopws",
+  "name": "kusflo/PshopWs",
   "type": "library",
   "minimum-stability": "dev",
   "description": "PHP wrapper for PrestaShop Webservices 1.7.x and 1.6.x.",
@@ -33,7 +33,8 @@
   },
   "autoload": {
     "psr-4": {
-      "pshopws\\": "src/"
+      "PshopWs\\": "src/",
+      "PshopWs\\Test\\": "test/"
     }
   }
 }

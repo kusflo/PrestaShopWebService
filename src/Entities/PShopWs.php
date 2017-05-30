@@ -1,12 +1,13 @@
 <?php
-
-namespace pshopws;
-
-use GuzzleHttp\Client;
-
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
  */
+
+namespace PshopWs\Entities;
+
+use GuzzleHttp\Client;
+use PshopWs\Exceptions\PShopWsException;
+
 abstract class PShopWs
 {
     private $url;

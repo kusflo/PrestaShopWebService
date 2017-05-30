@@ -1,6 +1,8 @@
 <?php
 
-namespace pshopws;
+namespace PshopWs\Services;
+
+use PshopWs\Exceptions\PShopWsException;
 
 /**
  * @author Marcos Redondo <kusflo at gmail.com>
@@ -27,7 +29,9 @@ class ServiceSimpleXmlToArray
     private function __construct($xmlObject)
     {
         if (!is_a($xmlObject, \SimpleXMLElement::class)) {
-            throw new PShopWsException('The service '.__CLASS__.' has received a parameter other than SimpleXmlElement');
+            throw new PShopWsException(
+                'The service '.__CLASS__.' has received a parameter other than SimpleXmlElement'
+            );
         }
     }
 
