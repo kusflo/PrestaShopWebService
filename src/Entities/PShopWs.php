@@ -10,8 +10,8 @@ use PshopWs\Exceptions\PShopWsException;
 
 abstract class PShopWs
 {
-    private $url;
-    private $key;
+    protected $url;
+    protected $key;
 
     protected function __construct($url, $key)
     {

@@ -32,6 +32,7 @@ class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
      */
     public function testGetById($ps)
     {
+        $this->assertArrayHasKey("customer_data", $ps->getById(1));
         $this->assertArrayHasKey("id", $ps->getById(1));
     }
 
@@ -41,6 +42,7 @@ class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
      */
     public function testGetList($ps)
     {
+        $this->assertArrayHasKey("customer_data", $ps->getList()[0]);
         $this->assertArrayHasKey("id", $ps->getList()[0]);
     }
 
@@ -50,6 +52,7 @@ class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
      */
     public function testGetListLastDays($ps)
     {
+        $this->assertArrayHasKey("customer_data", $ps->getListLastDays()[0]);
         $this->assertArrayHasKey("id", $ps->getListLastDays()[0]);
     }
 
@@ -59,6 +62,7 @@ class PShopWsOrdersTest extends PHPUnit_Framework_TestCase
      */
     public function testGetListToday($ps)
     {
+        $this->assertArrayHasKey("customer_data", $ps->getListToday()[0]);
         $this->assertArrayHasKey("id", $ps->getListToday()[0]);
     }
 }

@@ -21,7 +21,7 @@ class PShopWsOrders extends PShopWs
         $options['id'] = $id;
         $objects = $this->get($options);
 
-        return ServiceSimpleXmlToArray::take($objects->order);
+        return $this->addCustomerDataToOrder(ServiceSimpleXmlToArray::take($objects->order));
     }
 
     public function getList()
@@ -79,7 +79,25 @@ class PShopWsOrders extends PShopWs
     {
         $objects = $this->get($options);
 
-        return ServiceSimpleXmlToArray::takeMultiple($objects->orders->order);
+        return $this->addCustomerDataToOrders(ServiceSimpleXmlToArray::takeMultiple($objects->orders->order));
+    }
+
+    protected function addCustomerDataToOrders($orders)
+    {
+        $ordersData = array();
+        foreach ($orders as $order) {
+            $ordersData [] = $this->addCustomerDataToOrder($order);
+        }
+
+        return $ordersData;
+    }
+
+    protected function addCustomerDataToOrder($order)
+    {
+        $psCustomers = new PShopWsCustomers($this->url, $this->key);
+        $order['customer_data'] = $psCustomers->getById($order['id_customer']);
+
+        return $order;
     }
 
     /**
