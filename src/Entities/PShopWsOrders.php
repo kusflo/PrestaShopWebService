@@ -86,7 +86,7 @@ class PShopWsOrders extends PShopWs
     {
         $ordersData = array();
         foreach ($orders as $order) {
-            $orderData [] = $this->addAssociation($order);
+            $ordersData [] = $this->addAssociation($order);
         }
 
         return $ordersData;
