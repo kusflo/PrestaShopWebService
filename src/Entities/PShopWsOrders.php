@@ -21,7 +21,7 @@ class PShopWsOrders extends PShopWs
         $options['id'] = $id;
         $objects = $this->get($options);
 
-        return $this->addCustomerDataToOrder(ServiceSimpleXmlToArray::take($objects->order));
+        return $this->addAssociation(ServiceSimpleXmlToArray::take($objects->order));
     }
 
     public function getList()
@@ -79,23 +79,39 @@ class PShopWsOrders extends PShopWs
     {
         $objects = $this->get($options);
 
-        return $this->addCustomerDataToOrders(ServiceSimpleXmlToArray::takeMultiple($objects->orders->order));
+        return $this->addAssociations(ServiceSimpleXmlToArray::takeMultiple($objects->orders->order));
     }
 
-    protected function addCustomerDataToOrders($orders)
+    protected function addAssociations($orders)
     {
         $ordersData = array();
         foreach ($orders as $order) {
-            $ordersData [] = $this->addCustomerDataToOrder($order);
+            $orderData [] = $this->addAssociation($order);
         }
 
         return $ordersData;
+    }
+
+    protected function addAssociation($order)
+    {
+        $order = $this->addCustomerDataToOrder($order);
+        $order = $this->addAddressDataToOrder($order);
+
+        return $order;
     }
 
     protected function addCustomerDataToOrder($order)
     {
         $psCustomers = new PShopWsCustomers($this->url, $this->key);
         $order['customer_data'] = $psCustomers->getById($order['id_customer']);
+
+        return $order;
+    }
+
+    protected function addAddressDataToOrder($order)
+    {
+        $psAddress = new PShopWsAddresses($this->url, $this->key);
+        $order['addresses_data'] = $psAddress->getById($order['id_address_delivery']);
 
         return $order;
     }

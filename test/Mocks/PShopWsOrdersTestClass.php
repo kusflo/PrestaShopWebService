@@ -25,18 +25,19 @@ class PShopWsOrdersTestClass extends PShopWsOrders
         return $sXml;
     }
 
-    protected function addCustomerDataToOrders($orders)
+    protected function addAssociations($orders)
     {
         foreach ($orders as $order) {
-            $ordersData [] = $this->addCustomerDataToOrder($order);
+            $ordersData [] = $this->addAssociation($order);
         }
 
         return $ordersData;
     }
 
-    protected function addCustomerDataToOrder($order)
+    protected function addAssociation($order)
     {
-        $order ['customer_data'] = array('id' => 1);
+        $order['customer_data'] = 'yes';
+        $order['addresses_data'] = 'yes';
 
         return $order;
     }
