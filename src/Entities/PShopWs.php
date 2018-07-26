@@ -28,7 +28,7 @@ abstract class PShopWs
 
     protected function get($options = null)
     {
-        $response = $this->client->request('GET', $this->getValidUrl($options), ['auth' => [$this->key]]);
+        $response = $this->client->request('GET', $this->getValidUrl($options), ['auth' => [$this->key, '']]);
         PShopWsException::checkStatusCode($response->getStatusCode());
 
         return $this->parseXML($response->getBody());
