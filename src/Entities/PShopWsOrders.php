@@ -39,7 +39,7 @@ class PShopWsOrders extends PShopWs
         foreach ($days as $day) {
             $result = $this->getListByDay($day);
             if ($result) {
-                $orders [] = $result[0];
+                $orders = array_merge($orders, $result);
             }
         }
 
