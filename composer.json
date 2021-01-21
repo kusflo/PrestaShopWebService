@@ -15,12 +15,12 @@
     "filter"
   ],
   "homepage": "https://github.com/kusflo/PrestaShopWebService",
-  "license": "GNU-3.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "Marcos Redondo",
       "email": "kusflo@gmail.com",
-      "role": "Full-Stack Developer"
+      "role": "Developer"
     }
   ],
   "require-dev": {
