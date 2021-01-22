@@ -36,5 +36,9 @@
       "PshopWs\\": "src/",
       "PshopWs\\Test\\": "test/"
     }
+  },
+
+  "scripts": {
+    "test": "phpunit"
   }
 }
