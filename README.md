@@ -1,5 +1,5 @@
 
-[![Actions Status](https://github.com/kusflo/PrestaShopWebService/workflows/Build%20and%20Test/badge.svg)](https://github.com/kusflo/PrestaShopWebService/actions)
+[![Actions Status](https://github.com/kusflo/PrestaShopWebService/workflows/Build%20and%20Tests/badge.svg)](https://github.com/kusflo/PrestaShopWebService/actions)
 [![Latest Stable Version](https://poser.pugx.org/kusflo/prestashop-webservice/v/stable)](https://packagist.org/packages/kusflo/prestashop-webservice)
 [![Total Downloads](https://poser.pugx.org/kusflo/prestashop-webservice/downloads)](https://packagist.org/packages/kusflo/prestashop-webservice)
 [![License](https://poser.pugx.org/kusflo/prestashop-webservice/license)](https://packagist.org/packages/kusflo/prestashop-webservice)
